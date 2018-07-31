@@ -57,6 +57,20 @@ class KeyboardViewController: UIInputViewController {
                                                    for: .allTouchEvents)
 
   }
+  
+  override func textDidChange(_ textInput: UITextInput?) {
+    
+    let colorScheme: MorseColorScheme
+    
+    if textDocumentProxy.keyboardAppearance == .dark {
+      colorScheme = .dark
+    } else {
+      colorScheme = .light
+    }
+    
+    morseKeyboardView.setColorScheme(colorScheme)
+  }
+
 }
 
 // MARK: - MorseKeyboardViewDelegate
