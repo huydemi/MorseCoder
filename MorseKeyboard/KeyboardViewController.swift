@@ -27,6 +27,7 @@
 /// THE SOFTWARE.
 
 import UIKit
+import CoreLocation
 
 class KeyboardViewController: UIInputViewController {
   
@@ -45,6 +46,8 @@ class KeyboardViewController: UIInputViewController {
     }
     return lastWord
   }
+  var currentLocation: CLLocation?
+  let locationManager = CLLocationManager()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -73,6 +76,12 @@ class KeyboardViewController: UIInputViewController {
     requestSupplementaryLexicon { lexicon in
       self.userLexicon = lexicon
     }
+    
+    locationManager.requestWhenInUseAuthorization()
+    locationManager.delegate = self
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    locationManager.distanceFilter = 100
+    locationManager.startUpdatingLocation()
   }
   
   override func textDidChange(_ textInput: UITextInput?) {
@@ -93,9 +102,15 @@ class KeyboardViewController: UIInputViewController {
 // MARK: - MorseKeyboardViewDelegate
 extension KeyboardViewController: MorseKeyboardViewDelegate {
   func insertCharacter(_ newCharacter: String) {
-    
     if newCharacter == " " {
-      attemptToReplaceCurrentWord()
+      if currentWord?.lowercased() == "sos",
+        let currentLocation = currentLocation {
+        let lat = currentLocation.coordinate.latitude
+        let lng = currentLocation.coordinate.longitude
+        textDocumentProxy.insertText(" (\(lat), \(lng))")
+      } else {
+        attemptToReplaceCurrentWord()
+      }
     }
     
     textDocumentProxy.insertText(newCharacter)
@@ -135,5 +150,12 @@ private extension KeyboardViewController {
       
       textDocumentProxy.insertText(replacement.documentText)
     }
+  }
+}
+
+// MARK: - CLLocationManagerDelegate
+extension KeyboardViewController: CLLocationManagerDelegate {
+  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    currentLocation = locations.first
   }
 }
