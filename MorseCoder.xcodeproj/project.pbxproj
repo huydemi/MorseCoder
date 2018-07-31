@@ -19,6 +19,12 @@
 		18E28E23207409CB00F3841C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18E28E22207409CB00F3841C /* LaunchScreen.storyboard */; };
 		6B27868E2110208900494CBB /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B27868D2110208900494CBB /* KeyboardViewController.swift */; };
 		6B2786922110208900494CBB /* MorseKeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6B27868B2110208900494CBB /* MorseKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6B2786972110227100494CBB /* MorseColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04512C642015530F0022BDCD /* MorseColors.swift */; };
+		6B2786982110227100494CBB /* MorseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04512C652015530F0022BDCD /* MorseData.swift */; };
+		6B2786992110227100494CBB /* KeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04512C5D201553090022BDCD /* KeyboardButton.swift */; };
+		6B27869A2110227100494CBB /* MorseKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04512C5E201553090022BDCD /* MorseKeyboardView.swift */; };
+		6B27869B2110227100494CBB /* MorseKeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04512C5F201553090022BDCD /* MorseKeyboardView.xib */; };
+		6B27869C2110227100494CBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04512C47201545290022BDCD /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -236,6 +242,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B27869C2110227100494CBB /* Assets.xcassets in Resources */,
+				6B27869B2110227100494CBB /* MorseKeyboardView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,7 +267,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B27869A2110227100494CBB /* MorseKeyboardView.swift in Sources */,
+				6B2786992110227100494CBB /* KeyboardButton.swift in Sources */,
+				6B2786972110227100494CBB /* MorseColors.swift in Sources */,
 				6B27868E2110208900494CBB /* KeyboardViewController.swift in Sources */,
+				6B2786982110227100494CBB /* MorseData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
